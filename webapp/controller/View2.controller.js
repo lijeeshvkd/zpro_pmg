@@ -159,6 +159,7 @@ sap.ui.define(
               var oModel = new JSONModel();
               // Grossmargper
               // oData.NAV_PMG_ITEM_PRODUCT.results
+              oData.Validity = this.getDateDifference(oData.Pafvfrm, oData.Pafvto);
               var len = oData.NAV_PMG_ITEM_PRODUCT.results.length;
               // oData.Wgmper = 0;
               // oData.Wbuyingprice = 0;
@@ -1063,6 +1064,26 @@ sap.ui.define(
           oEvent.getSource().setValue("");
         }
       },
+
+      onValidToChange: function(oEvent) {
+        var oRequestModel = this.getView().getModel("oRequestModel"),
+            dValidFrom = oRequestModel.getProperty("/Pafvfrm"),
+            dValidTo = oEvent.getSource().getValue(),
+            sValidity = "";
+        if (dValidFrom && dValidTo) {
+          sValidity = this.getDateDifference(dValidFrom, dValidTo);
+        }
+        oRequestModel.setProperty("/Validity", sValidity);
+      },
+
+      getDateDifference: function(dDate1, dDate2) {
+          var sReturn = "";
+          if (dDate1 && dDate2) {
+              sReturn = Math.floor((new Date(dDate2) - new Date(dDate1)) / (1000 * 60 * 60 * 24)).toString();
+          }
+          return sReturn;
+      },
+
       onPmgRemarkInputLiveChange: function (oEvent) {
         this.deActivateActionButtons();
       },

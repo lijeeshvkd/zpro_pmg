@@ -138,7 +138,7 @@
             required="true"
         />
 
-        <Input
+        <!-- <Input
             id="id.validity.Input"
             value="{path:'oRequestModel>/Validity', formatter:'.formatter.removeLeadingZeros'}"
             width="25%"
@@ -146,10 +146,16 @@
             valueStateText="You can change Validity"
             liveChange="onValidityInputLiveChange"
             maxLength="3"
-        />
+        /> -->
+        <HBox justifyContent="SpaceBetween">
+            <Text text="{path:'oRequestModel>/Validity', formatter:'.formatter.removeLeadingZeros'}"/>
 
-        <Text
-            text="Till:{path:'oRequestModel>/Pafvto',  formatter: '.formatter.getFormattedDate' }"
-        />
+            <!-- <Text text="Till:{path:'oRequestModel>/Pafvto',  formatter: '.formatter.getFormattedDate' }" /> -->
+            <HBox alignItems="Center">
+                <Label text="Till: " class="sapUiTinyMarginEnd" />
+                <DatePicker value="{path:'oRequestModel>/Pafvto',  formatter: '.formatter.getFormattedDate'}"
+                    displayFormat="dd/MM/yyyy" change="onValidToChange" />
+            </HBox>
+        </HBox>
     </forms:SimpleForm>
 </core:FragmentDefinition>
