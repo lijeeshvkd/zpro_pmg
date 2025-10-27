@@ -1,0 +1,496 @@
+<core:FragmentDefinition
+    xmlns="sap.ui.table"
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+>
+    <Table
+        id="idTblProductDetails"
+        rows="{ProductModel>/}"
+        fixedColumnCount="5"
+        selectionMode="None"
+        visibleRowCount='5'
+    >
+        <extension>
+            <m:OverflowToolbar style="Clear">
+                <m:Title
+                    id="title"
+                    text="Products Details"
+                />
+                <m:Link
+                    id="idShowAttachments"
+                    visible="false"
+                    text="Show Attachments"
+                    press="onShowAttachmentsLinkPress"
+                />
+                <m:ToolbarSpacer />
+                <!-- Start: Excel001 -->
+                <m:Button
+                    text="Download"
+                    icon="sap-icon://download"
+                    press="onExport"
+                    type="Neutral"
+                    tooltip="Excel Download"
+                />
+                <u:FileUploader
+                    id="FileUploaderId"
+                    buttonText="Excel Upload"
+                    sameFilenameAllowed="true"
+                    buttonOnly="true"
+                    fileType="XLSX,xlsx"
+                    icon="sap-icon://browse-folder"
+                    change="onUpload"
+                    tooltip="Excel Upload"
+                    style="Emphasized"
+                />
+                <!-- End: Excel001 -->
+                <m:Button
+                    text="Generate"
+                    icon="sap-icon://cause"
+                    press="onGenerate"
+                    type="Attention"
+                />
+            </m:OverflowToolbar>
+        </extension>
+        <columns>
+            <Column
+                hAlign="Center"
+                width="8rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Material Freight Groups"
+                />
+                <template>
+                    <m:Text text="{ProductModel>Mfrgr}" />
+                </template>
+            </Column>
+            <!-- Start: Product001 -->
+            <Column
+                hAlign="Center"
+                width="8rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Product"
+                />
+                <template>
+                    <m:Text text="{ProductModel>Prdgrp}" />
+                </template>
+            </Column>
+            <!-- End: Product001 -->
+            <Column
+                hAlign="End"
+                width="4rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Size"
+                />
+                <template>
+                    <m:Text text="{ProductModel>Szcm}" />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                width="8rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Designs"
+                />
+                <template>
+                    <m:Text text="{ProductModel>Design}" />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                width="12rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Vendor"
+                />
+                <template>
+                    <m:Input
+                        value="{parts: ['ProductModel>Sname','ProductModel>Source','ProductModel>Design'], formatter:'.formatter.showSource'}"
+                        id="idSource.Input"
+                        valueStateText="Enter Vendor"
+                        showValueHelp="true"
+                        editable="{=${ProductModel>Isown} === 'X' ? false: true}"
+                        valueHelpRequest="onSourceHelp"
+                        class="sapUiSmallMarginEnd"
+                        placeholder="Vendor"
+                        textAlign="End"
+                        liveChange="onSourceInputLiveChange"
+                    />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                width="6rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Ex Factory"
+                />
+                <template>
+                    <m:Text text="{path:'ProductModel>Exfacsqft'}" />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                width="5rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Ex Depot"
+                />
+                <template>
+                    <m:Text text="{path:'ProductModel>Exdepsqft'}" />
+                </template>
+            </Column>
+            <Column
+                hAlign="End"
+                width="5rem"
+                visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29'  ? false: true}"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="ORC(Box)"
+                />
+                <template>
+                    <m:Input
+                        value="{path:'ProductModel>Commbox'}"
+                        textAlign="End"
+                        liveChange="onCommboxInputLiveChange"
+                    />
+                </template>
+            </Column>
+            <Column
+                hAlign="End"
+                width="7rem"
+                visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29'  ? true: false}"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="ORC(%)"
+                />
+                <template>
+                    <m:Input
+                        value="{path:'ProductModel>Commboxp'}"
+                        textAlign="End"
+                        liveChange="onCommboxpInputLiveChange"
+                    />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                width="4rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Quality"
+                />
+                <template>
+                    <m:Text text="{path:'ProductModel>Zzprodh4'}" />
+                </template>
+            </Column>
+            <!-- Start: NewCols001 -->
+            <Column
+                hAlign="Center"
+                width="6rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Part A/B/L"
+                />
+                <template>
+                    <m:Text text="{path:'ProductModel>Mvgr5'}" />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                width="6rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Total Volume"
+                />
+                <template>
+                    <m:Text text="{path:'ProductModel>Totalvolume'}" />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                width="6rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Current Volume"
+                />
+                <template>
+                    <m:Text text="{path:'ProductModel>CurVolFt'}" />
+                </template>
+            </Column>
+            <!-- End: NewCols001 -->
+            <Column
+                hAlign="Center"
+                width="4rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Freight"
+                />
+                <template>
+                    <m:Text text="{path:'ProductModel>Frghtsqft'}" />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                visible="false"
+                width="8rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Volume"
+                />
+                <template>
+                    <m:Text
+                        visible="false"
+                        text="{ProductModel>Volume}"
+                    />
+                </template>
+            </Column>
+            <Column
+                hAlign="End"
+                width="8rem"
+            >
+                <m:Label
+                    id="id.discount.column.Label"
+                    design="Bold"
+                    wrapping="true"
+                    text="Discount"
+                />
+                <template>
+                    <m:VBox>
+                        <m:Input
+                            value="{path:'ProductModel>Discount' }"
+                            visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29'  ?true:false}"
+                            textAlign="End"
+                            liveChange="onDiscountInputLiveChange"
+                        />
+
+                        <m:Input
+                            value="{path:'ProductModel>Discountb' }"
+                            visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29'  ?false:true}"
+                            textAlign="End"
+                            liveChange="onDiscountInputLiveChange"
+                        />
+                    </m:VBox>
+                </template>
+            </Column>
+
+            <Column
+                hAlign="End"
+                width="6rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="NEF(Sqft)"
+                    tooltip="Net Ex Factory(Sqft)"
+                />
+                <template>
+                    <m:Text text="{ProductModel>Netexsqft}" />
+                </template>
+            </Column>
+            <Column
+                hAlign="End"
+                width="8rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="SVC/BP(Sqft)"
+                />
+                <template>
+                    <m:Input
+                        value="{ProductModel>Buyingpricesqft}"
+                        textAlign="End"
+                        liveChange="onBuyingpricesqftInputLiveChange"
+                    />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                width="10rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="BP Remarks"
+                />
+                <template>
+                    <m:TextArea
+                        value="{ProductModel>Remark}"
+                        liveChange="onSbremarkTextAreaLiveChange"
+                    />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                visible="false"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Gross Margin"
+                />
+                <template>
+                    <m:Text
+                        visible="false"
+                        text="{ProductModel>Grossmarg}"
+                    />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                visible="false"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Volume(Sqft In Lakhs)"
+                />
+                <template>
+                    <m:Text
+                        visible="false"
+                        text="{ProductModel>Zvolumepft}"
+                    />
+                </template>
+            </Column>
+            <Column
+                hAlign="End"
+                width="4rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="GM(%)"
+                    tooltip="Gross Margin(%)"
+                />
+                <template>
+                    <m:Text text="{path:'ProductModel>Grossmargper'}" />
+                </template>
+            </Column>
+            <Column
+                hAlign="End"
+                width="6rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Desired BP"
+                />
+                <template>
+                    <m:Input
+                        value="{ProductModel>Desiredbp}"
+                        textAlign="End"
+                        liveChange="onBuyingpricesqftInputLiveChange"
+                    />
+                </template>
+            </Column>
+            <Column
+                hAlign="End"
+                width="6rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Remarks"
+                    tooltip="Remarks"
+                />
+                <template>
+                    <m:Text text="{path:'ProductModel>Sbremark'}" />
+                </template>
+            </Column>
+            <Column
+                hAlign="Center"
+                width="8rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Manufacturing Plant"
+                    tooltip="Manufacturing Plant"
+                />
+                <template>
+                    <m:Text text="{path:'ProductModel>Zprodh4'}" />
+                </template>
+            </Column>
+             <Column
+                hAlign="Center"
+                width="8rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Comp Price"
+                />
+                <template>
+                    <m:Input value="{path:'ProductModel>compPrice'}" />
+                </template>
+            </Column>
+            
+           
+        
+        <Column
+                hAlign="Center"
+                width="8rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="Comp Name"
+                    tooltip="PCompany Name"
+                />
+                <template>
+                    <m:Input value="{path:'ProductModel>CompName'}" />
+                </template>
+            </Column>
+            <!-- Start: Remarkcol001 -->
+            <Column
+                hAlign="Center"
+                width="8rem"
+            >
+                <m:Label
+                    design="Bold"
+                    wrapping="true"
+                    text="PMG Remarks"
+                    tooltip="PMG Remarks"
+                />
+                <template>
+                    <m:Input value="{path:'ProductModel>Premark'}" />
+                </template>
+            </Column>
+            
+            <!-- End: Remarkcol001 -->
+        </columns>
+    </Table>
+</core:FragmentDefinition>

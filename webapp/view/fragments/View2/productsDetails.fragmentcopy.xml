@@ -1,0 +1,377 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:forms="sap.ui.layout.form"
+>
+    <ScrollContainer
+        width="100%"
+        vertical="true"
+        focusable="true"
+    >
+        <Table
+            class="sapUiMediumMarginBeginEnd sapUiTinyMarginTop"
+            id="idTblProductDetails"
+            items="{ProductModel>/}"
+        >
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="Products Details" />
+                    <Button
+                        text="Show hidden columns"
+                        visible="false"
+                    />
+                    <Link
+                        text="Show Attachments"
+                        press="onShowAttachmentsLinkPress"
+                    />
+                    <ToolbarSpacer />
+
+                    <Button
+                        text="Generate"
+                        icon="sap-icon://cause"
+                        press="onGenerate"
+                        type="Attention"
+                    />
+                </Toolbar>
+            </headerToolbar>
+
+            <columns>
+                <Column
+                    
+                    demandPopin="true"
+                    hAlign="Center"
+                    width="8rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Material Freight Groups"
+                    />
+                </Column>
+                <Column
+                    
+                    demandPopin="true"
+                    hAlign="End"
+                    width="4rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Size"
+                    />
+                </Column>
+                <Column
+                    
+                    demandPopin="true"
+                    hAlign="Center"
+                    width="8rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Designs"
+                    />
+                </Column>
+                <Column
+                    
+                    demandPopin="true"
+                    hAlign="Center"
+                    width="12rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Vendor"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="Center"
+                    width="6rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Ex Factory"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="Center"
+                    width="5rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Ex Depot"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="End"
+                    width="5rem"
+                    visible="{=${oRequestModel>/Vtweg} === '19'? false: true}"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="ORC(Box)"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="End"
+                    width="7rem"
+                    visible="{=${oRequestModel>/Vtweg} === '19'? true: false}"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="ORC(%)"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="Center"
+                    width="4rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Quality"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="Center"
+                    width="4rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Freight"
+                    />
+                </Column>
+                <Column
+                    
+                    demandPopin="true"
+                    hAlign="Center"
+                    visible="false"
+                    width="8rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Volume"
+                    />
+                </Column>
+                <Column
+                    
+                    demandPopin="true"
+                    hAlign="End"
+                    width="8rem"
+                >
+                    <Label
+                        id="id.discount.column.Label"
+                        design="Bold"
+                        wrapping="true"
+                        text="Discount"
+                    />
+                </Column>
+
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="End"
+                    width="6rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="NEF(Sqft)"
+                        tooltip="Net Ex Factory(Sqft)"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="End"
+                    width="8rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="SVC/BP(Sqft)"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="Center"
+                    width="10rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="BP Remarks"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="Center"
+                    visible="false"
+                >
+                    <Text text="Gross Margin" />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="Center"
+                    visible="false"
+                >
+                    <Text text="Volume(Sqft In Lakhs)" />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="End"
+                    width="4rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="GM(%)"
+                        tooltip="Gross Margin(%)"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="End"
+                    width="6rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Desired BP"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="End"
+                    width="6rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Remarks"
+                        tooltip="Remarks"
+                    />
+                </Column>
+                <Column
+                   
+                    demandPopin="true"
+                    hAlign="Center"
+                    width="8rem"
+                >
+                    <Label
+                        design="Bold"
+                        wrapping="true"
+                        text="Manufacturing Plant"
+                        tooltip="Manufacturing Plant"
+                    />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <Text text="{ProductModel>Mfrgr}" />
+                        <Text text="{ProductModel>Szcm}" />
+                        <Text text="{ProductModel>Design}" />
+                        <!-- value="{ProductModel>Source}"  -->
+                        <Input
+                            value="{parts: ['ProductModel>Sname','ProductModel>Source'], formatter:'.formatter.showSource'}"
+                            id="idSource.Input"
+                            valueStateText="Enter Vendor"
+                            showValueHelp="true"
+                            editable="{=${ProductModel>Isown} === 'X' ? false: true}"
+                            valueHelpRequest="onSourceHelp"
+                            class="sapUiSmallMarginEnd"
+                            placeholder="Vendor"
+                            textAlign="End"
+                            liveChange="onSourceInputLiveChange"
+                        />
+                        <Text text="{path:'ProductModel>Exfacsqft'}" />
+                        <Text text="{path:'ProductModel>Exdepsqft'}" />
+                        <Input
+                            value="{path:'ProductModel>Commbox'}"
+                            textAlign="End"
+                            liveChange="onCommboxInputLiveChange"
+                        />
+                        <Input
+                            value="{path:'ProductModel>Commboxp'}"
+                            textAlign="End"
+                            liveChange="onCommboxpInputLiveChange"
+                        />
+                        <Text text="{path:'ProductModel>Zzprodh4'}" />
+                        <Text text="{path:'ProductModel>Frghtsqft'}" />
+                        <Text
+                            visible="false"
+                            text="{ProductModel>Volume}"
+                        />
+                        <VBox>
+                            <Input
+                                value="{path:'ProductModel>Discount' }"
+                                visible="{=${ProductModel>Discount}==='0.00'?false:true}"
+                                textAlign="End"
+                                liveChange="onDiscountInputLiveChange"
+                            />
+
+                            <Input
+                                value="{path:'ProductModel>Discountb' }"
+                                visible="{=${ProductModel>Discountb}==='0.00'?false:true}"
+                                textAlign="End"
+                                liveChange="onDiscountInputLiveChange"
+                            />
+                        </VBox>
+                        <Text text="{ProductModel>Netexsqft}" />
+                        <Input
+                            value="{ProductModel>Buyingpricesqft}"
+                            textAlign="End"
+                            liveChange="onBuyingpricesqftInputLiveChange"
+                        />
+                        <TextArea
+                            value="{ProductModel>Remark}"
+                            liveChange="onSbremarkTextAreaLiveChange"
+                        />
+                        <Text
+                            visible="false"
+                            text="{ProductModel>Grossmarg}"
+                        />
+                        <Text
+                            visible="false"
+                            text="{ProductModel>Zvolumepft}"
+                        />
+                        <Text text="{path:'ProductModel>Grossmargper'}" />
+                        <Input
+                            value="{ProductModel>Desiredbp}"
+                            textAlign="End"
+                            liveChange="onBuyingpricesqftInputLiveChange"
+                        />
+                        <Text text="{path:'ProductModel>Sbremark'}" />
+                        <Text text="{path:'ProductModel>Zprodh4'}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </ScrollContainer>
+</core:FragmentDefinition>
