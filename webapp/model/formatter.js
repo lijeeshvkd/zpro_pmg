@@ -252,6 +252,40 @@ sap.ui.define([], function () {
       return colorCode;
     },
 
+    getCategoryStatusColor: function (category) {
+      var colorCode = 9;
+      if (category === "R") {
+        colorCode = 3;
+      } else if (category === "Y") {
+        colorCode = 1;
+      } else if (category === "G") {
+        colorCode = 8;
+      } else if (category === "O") {
+        colorCode = 2
+      } else {
+        colorCode = 9; // default color
+      }
+
+      return colorCode;
+    },
+
+    getCategoryStatusText: function (category) {
+      var sText = "Not Found";
+      if (category === "R") {
+        sText = "Red";
+      } else if (category === "Y") {
+        sText = "Yellow";
+      } else if (category === "G") {
+        sText = "Green";
+      } else if (category === "O") {
+        sText = "Orange";
+      } else {
+        sText = "Not Found"; // default text
+      }
+
+      return sText;
+    },
+
     getGMColor: function (val) {
       var colorCode = "";
       if (parseInt(val) < 15) {

@@ -721,8 +721,8 @@ sap.ui.define(
       onGenerate: function () {
         var items = this.getView().getModel("ProductModel").getData(),
           validity = this.byId(
-            sap.ui.core.Fragment.createId("idFragment", "id.validity.Input")
-          ).getValue(),
+            sap.ui.core.Fragment.createId("idFragment", "id.validity.Text")
+          ).getText(),
           pafNo = this.getView()
             .getModel("oRequestModel")
             .getProperty("/Pafno"),
