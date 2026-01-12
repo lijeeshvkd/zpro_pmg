@@ -443,7 +443,7 @@
 													formatter: '.formatter.getGMColor' }"
                                     />
                                     <Text
-                                        text="{path:'JSONModelForTable>Pendingat'}"
+                                        text="{path:'JSONModelForTable>Role'}"
                                     />
                                     <tnt:InfoLabel
                                         text="{ parts: ['JSONModelForTable>Status'], formatter: '.formatter.getStatus' }"
