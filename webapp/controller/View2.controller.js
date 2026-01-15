@@ -1070,8 +1070,12 @@ sap.ui.define(
             dValidFrom = oRequestModel.getProperty("/Pafvfrm"),
             dValidTo = oEvent.getSource().getValue(),
             sValidity = "";
+        var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({
+          pattern: "MM/dd/yyyy",
+        });
         if (dValidFrom && dValidTo) {
-          sValidity = this.getDateDifference(dValidFrom, dValidTo);
+          dValidTo = dateFormat.parse(dValidTo);
+          sValidity = this.getDateDifference(dValidFrom.setHours(0, 0, 0, 0), dValidTo);
         }
         oRequestModel.setProperty("/Validity", sValidity);
       },
@@ -1079,7 +1083,7 @@ sap.ui.define(
       getDateDifference: function(dDate1, dDate2) {
           var sReturn = "";
           if (dDate1 && dDate2) {
-              sReturn = Math.floor((new Date(dDate2) - new Date(dDate1)) / (1000 * 60 * 60 * 24)).toString();
+              sReturn = Math.floor((dDate2 - dDate1) / (1000 * 60 * 60 * 24)).toString();
           }
           return sReturn;
       },
