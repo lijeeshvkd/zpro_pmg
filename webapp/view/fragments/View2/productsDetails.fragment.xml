@@ -475,18 +475,34 @@
                 </template>
             </Column>
             <!-- Start: Remarkcol001 -->
-            <Column
-                hAlign="Center"
-                width="8rem"
-            >
-                <m:Label
-                    design="Bold"
-                    wrapping="true"
-                    text="PMG Remarks"
-                    tooltip="PMG Remarks"
-                />
+            <Column hAlign="Center" width="8rem" >
+                <m:Label design="Bold" wrapping="true" text="PMG Remarks" tooltip="PMG Remarks" />
                 <template>
                     <m:Input value="{path:'ProductModel>Premark'}" />
+                </template>
+            </Column>
+            
+            <!-- End: Remarkcol001 -->
+
+            <!-- Start: New Changes by Harsh -->
+            <Column hAlign="Center" width="8rem" >
+                <m:Label design="Bold" wrapping="true" text="Avg Bill Price" tooltip="Avg Bill Price" />
+                <template>
+                    <m:Input value="{path:'ProductModel>AvgBill'}" />
+                </template>
+            </Column>
+
+            <Column hAlign="Center" width="8rem" >
+                <m:Label design="Bold" wrapping="true" text="Last Billed Price" tooltip="Last Billed Price" />
+                <template>
+                    <m:Input value="{path:'ProductModel>LastBill'}" />
+                </template>
+            </Column>
+
+            <Column hAlign="Center" width="8rem" >
+                <m:Label design="Bold" wrapping="true" text="Min Bill Price" tooltip="Min Bill Price" />
+                <template>
+                    <m:Input value="{path:'ProductModel>MinBill'}" />
                 </template>
             </Column>
             
