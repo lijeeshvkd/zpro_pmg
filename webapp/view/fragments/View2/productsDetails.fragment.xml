@@ -505,6 +505,20 @@
                     <m:Input value="{path:'ProductModel>MinBill'}" />
                 </template>
             </Column>
+
+            <Column hAlign="Center" width="8rem" >
+                <m:Label design="Bold" wrapping="true" text="Order quantity" tooltip="Order quantity" />
+                <template>
+                    <m:Input value="{path:'ProductModel>QuantityKwmeng'}" />
+                </template>
+            </Column>
+
+            <Column hAlign="Center" width="8rem" >
+                <m:Label design="Bold" wrapping="true" text="Invoice quantity" tooltip="Invoice quantity" />
+                <template>
+                    <m:Input value="{path:'ProductModel>QuantityKwmengM2'}" />
+                </template>
+            </Column>
             
             <!-- End: Remarkcol001 -->
         </columns>
