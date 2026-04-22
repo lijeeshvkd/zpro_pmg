@@ -160,7 +160,7 @@
             <Column
                 hAlign="End"
                 width="5rem"
-                visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29'  ? false: true}"
+                visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29' || ${oRequestModel>/Vtweg} === '35' ? false: true}"
             >
                 <m:Label
                     design="Bold"
@@ -178,7 +178,7 @@
             <Column
                 hAlign="End"
                 width="7rem"
-                visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29'  ? true: false}"
+                visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29' || ${oRequestModel>/Vtweg} === '35' ? true: false}"
             >
                 <m:Label
                     design="Bold"
@@ -291,14 +291,14 @@
                     <m:VBox>
                         <m:Input
                             value="{path:'ProductModel>Discount' }"
-                            visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29'  ?true:false}"
+                            visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29' || ${oRequestModel>/Vtweg} === '35' ?true:false}"
                             textAlign="End"
                             liveChange="onDiscountInputLiveChange"
                         />
 
                         <m:Input
                             value="{path:'ProductModel>Discountb' }"
-                            visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29'  ?false:true}"
+                            visible="{=${oRequestModel>/Vtweg} === '15' || ${oRequestModel>/Vtweg} === '19' || ${oRequestModel>/Vtweg} === '25' || ${oRequestModel>/Vtweg} === '29' || ${oRequestModel>/Vtweg} === '35' ?false:true}"
                             textAlign="End"
                             liveChange="onDiscountInputLiveChange"
                         />
