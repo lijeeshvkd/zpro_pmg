@@ -57,6 +57,9 @@ sap.ui.define([], function () {
           case '29':
             return 'Project via Dealer- 29';
             break;
+          case '35':
+            return 'Dealer - In-Bill Discount - 35';
+            break;
           default:
             break;
         }

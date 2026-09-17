@@ -157,6 +157,14 @@ sap.ui.define([
                     aFilter.push(oFilterSpart);
                 }
 
+                var oDateRange = this.getView().getModel("dateRange").getData();
+                if (oDateRange.start && oDateRange.end) {
+                    var oFilterStart = new sap.ui.model.Filter([new sap.ui.model.Filter("Erdat", sap.ui.model.FilterOperator.GE, oDateRange.start)], false);
+                    var oFilterEnd = new sap.ui.model.Filter([new sap.ui.model.Filter("Erdat", sap.ui.model.FilterOperator.LE, oDateRange.end)], false);
+                    aFilter.push(oFilterStart);
+                    aFilter.push(oFilterEnd);
+                }
+
 
 
                 this.getView().setBusy(true);

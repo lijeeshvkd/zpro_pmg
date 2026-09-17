@@ -90,7 +90,7 @@
             <HBox alignItems="Center">
                 <Label text="Till: " class="sapUiTinyMarginEnd" />
                 <DatePicker value="{path:'oRequestModel>/Pafvto',  formatter: '.formatter.getFormattedDate'}"
-                    displayFormat="MM/dd/yyyy" change="onValidToChange" />
+                    displayFormat="dd/MM/yyyy" change="onValidToChange" />
             </HBox>
         </HBox>
     </forms:SimpleForm>

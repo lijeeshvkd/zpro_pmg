@@ -595,7 +595,7 @@
                             </Table:Column>
                             <Table:Column
                                 id="Pendingat"
-                                sortProperty="Pendingat"
+                                sortProperty="Role"
                             >
                                 <Label
                                     text="Pending At"
@@ -603,7 +603,7 @@
                                 />
                                 <Table:template>
                                     <Text
-                                        text="{path:'JSONModelForTable>Pendingat'}"
+                                        text="{path:'JSONModelForTable>Role'}"
                                     />
                                 </Table:template>
                             </Table:Column>

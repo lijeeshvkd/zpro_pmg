@@ -199,7 +199,7 @@ sap.ui.define(
               var oPrdModel = this.getView().getModel("ProductModel");
 
               oPrdModel.setData(oData.NAV_PMG_ITEM_PRODUCT.results);
-              if (oData.Vtweg === "15" || oData.Vtweg === "19" || oData.Vtweg === "25" || oData.Vtweg === "29") {
+              if (oData.Vtweg === "15" || oData.Vtweg === "19" || oData.Vtweg === "25" || oData.Vtweg === "29" || oData.Vtweg === "35") {
                 this.byId(
                   sap.ui.core.Fragment.createId(
                     "idFragProductsDetails",
@@ -1070,8 +1070,12 @@ sap.ui.define(
             dValidFrom = oRequestModel.getProperty("/Pafvfrm"),
             dValidTo = oEvent.getSource().getValue(),
             sValidity = "";
+        var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({
+          pattern: "MM/dd/yyyy",
+        });
         if (dValidFrom && dValidTo) {
-          sValidity = this.getDateDifference(dValidFrom, dValidTo);
+          dValidTo = dateFormat.parse(dValidTo);
+          sValidity = this.getDateDifference(dValidFrom.setHours(0, 0, 0, 0), dValidTo);
         }
         oRequestModel.setProperty("/Validity", sValidity);
       },
@@ -1079,7 +1083,7 @@ sap.ui.define(
       getDateDifference: function(dDate1, dDate2) {
           var sReturn = "";
           if (dDate1 && dDate2) {
-              sReturn = Math.floor((new Date(dDate2) - new Date(dDate1)) / (1000 * 60 * 60 * 24)).toString();
+              sReturn = Math.floor((dDate2 - dDate1) / (1000 * 60 * 60 * 24)).toString();
           }
           return sReturn;
       },
@@ -1169,7 +1173,7 @@ sap.ui.define(
 
         for (let index = 0; index < noItems; index++) {
           var Vtweg = this.getView().getModel("oRequestModel").getProperty("/Vtweg")
-          if (Vtweg === "15" || Vtweg === "19" || Vtweg === "25" || Vtweg === "29") {
+          if (Vtweg === "15" || Vtweg === "19" || Vtweg === "25" || Vtweg === "29" || Vtweg === "35") {
             wDiscount =
               wDiscount +
               (Number(tableData[index].Discount) / 100) *
@@ -1292,7 +1296,7 @@ sap.ui.define(
               for (var i = 0; i < excelData.length; i++) {
                 var sPath = "/" + i.toString() + "/";
                 // Editable columns
-                if (distributorChannel === "15" || distributorChannel === "19" || distributorChannel === "25" || distributorChannel === "29") {
+                if (distributorChannel === "15" || distributorChannel === "19" || distributorChannel === "25" || distributorChannel === "29" || distributorChannel === "35") {
                   that.getView().getModel("ProductModel").setProperty(sPath + "Commboxp", excelData[i].ORC);
                   that.getView().getModel("ProductModel").setProperty(sPath + "Discount", excelData[i].Discount);
                 } else {
@@ -1392,7 +1396,7 @@ sap.ui.define(
           element.disChannel = disChannel;
           element.paymentTerm = paymentTerm;
 
-          if (disChannel === "15" || disChannel === "19" || disChannel === "25" || disChannel === "29") {
+          if (disChannel === "15" || disChannel === "19" || disChannel === "25" || disChannel === "29" || disChannel === "35") {
             element.ORC = element.Commboxp;
             element.Discount = element.Discount;
           } else {
