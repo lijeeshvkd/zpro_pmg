@@ -481,6 +481,13 @@
                     <m:Input value="{path:'ProductModel>Premark'}" />
                 </template>
             </Column>
+
+            <Column hAlign="Center" width="8rem" >
+                <m:Label design="Bold" wrapping="true" text="DH Remarks" tooltip="DH Remarks" />
+                <template>
+                    <m:Text text="{path:'ProductModel>DhRemarkItem'}" />
+                </template>
+            </Column>
             
             <!-- End: Remarkcol001 -->
 
